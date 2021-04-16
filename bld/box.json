@@ -1,0 +1,9 @@
+{
+    "base-path": "../",
+    "chmod": "0755",
+    "directories": ["vendor"],
+    "files": ["index.php", "RoboFile.php"],
+    "main": "index.php",
+    "output": "dist/adfm_installer.phar",
+    "stub": true
+}

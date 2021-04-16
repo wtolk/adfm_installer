@@ -1,0 +1,6 @@
+{
+    "require": {
+        "consolidation/robo": "^3",
+        "symfony/yaml": "^5.2"
+    }
+}

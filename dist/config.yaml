@@ -1,0 +1,16 @@
+path: 'test'
+
+packages:
+  - 'wtolk/adfm  --no-cache'
+  - 'wtolk/crud  --no-cache'
+  - 'barryvdh/laravel-debugbar'
+  - 'barryvdh/laravel-ide-helper'
+
+npm: true
+
+DB:
+  DB_HOST: "mysql"
+  DB_DATABASE: 'lara4'
+  DB_USERNAME: 'root'
+  DB_PASSWORD: "root"
+  DB_PORT: '3306'
