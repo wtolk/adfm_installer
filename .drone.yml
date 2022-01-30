@@ -19,7 +19,7 @@ steps:
 volumes:
   - name: deploy
     host:
-      path: /home/seryak/drotest
+      path: /home/seryak/builds/adfm_installer_build
   - name: docker_socket
     host:
       path: /var/run/docker.sock
