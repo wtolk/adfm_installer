@@ -42,8 +42,8 @@ clone:
 steps:
   - name: 'Запускаем релиз в докере'
     commands:
-      - cd ~/adfm_installer_build && docker-compose stop
-      - cd ~/adfm_installer_build && docker-compose up -d
+      - cd /home/seryak/builds/adfm_installer_build && docker-compose stop
+      - cd /home/seryak/builds/adfm_installer_build && docker-compose up -d
 
 depends_on:
   - default
