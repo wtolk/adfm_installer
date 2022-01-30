@@ -1,0 +1,55 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: 'Устанавливаем зависимости Composer'
+  image: seryak/p80
+  commands:
+    - composer install
+
+- name: 'Копируем файлы в папку релиза'
+  image: alpine
+  volumes:
+    - name: deploy
+      path: /home/deploy
+  commands:
+    - cp -r $PWD/* /home/deploy
+
+volumes:
+  - name: deploy
+    host:
+      path: /home/seryak/builds/adfm_installer_build
+  - name: docker_socket
+    host:
+      path: /var/run/docker.sock
+
+
+
+
+---
+kind: pipeline
+type: exec
+name: deploy
+#
+platform:
+  os: linux
+  arch: amd64
+
+clone:
+  disable: true
+
+steps:
+  - name: 'Запускаем релиз в докере'
+    commands:
+      - cd /home/seryak/builds/adfm_installer_build && docker-compose stop
+      - cd /home/seryak/builds/adfm_installer_build && docker-compose up -d
+
+depends_on:
+  - default
+
+
+
+
+
+

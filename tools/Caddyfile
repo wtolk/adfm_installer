@@ -1,0 +1,8 @@
+:80 {
+    root * /var/www/html
+    php_fastcgi php80:9000
+    file_server *
+    encode gzip zstd
+    header Access-Control-Allow-Origin "*"
+    # respond {http.request.host.labels.1}.{http.request.host.labels.0}
+}
