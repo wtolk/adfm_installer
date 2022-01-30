@@ -1,0 +1,25 @@
+version: '3.7'
+# Список сервисов (контейнеров)
+services:
+    caddy:
+      image: caddy:latest
+      restart: unless-stopped
+      ports:
+        - "86:80"
+      volumes:
+        - $PWD/tools/Caddyfile:/etc/caddy/Caddyfile
+        - ./:/var/www/html
+#      links:
+#        - php80
+
+
+#    php80:
+#      image: seryak/p80
+#      ports:
+#        - "6001:6001"
+#      volumes:
+#        - ./:/var/www/html # директория с сайтами
+#        - ./php.ini:/usr/local/etc/php/php.ini  # конфиг php
+
+
+
