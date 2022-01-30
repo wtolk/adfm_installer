@@ -31,7 +31,7 @@ volumes:
 kind: pipeline
 type: exec
 name: deploy
-#
+
 platform:
   os: linux
   arch: amd64
