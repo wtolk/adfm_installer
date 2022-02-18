@@ -4,7 +4,7 @@ name: tests
 
 steps:
   - name: 'Устанавливаем композер'
-    image: php:8.0-alpine
+    image: composer:latest
     commands:
       - composer install
 
