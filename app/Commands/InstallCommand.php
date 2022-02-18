@@ -27,11 +27,11 @@ class InstallCommand extends Command
         $this->setUpDB();
 
         if ($this->config['npm']) {
-            $response = Terminal::run('cd '.$this->config['path'].'; npm install');
+            $response = Terminal::timeout(600)->run('cd '.$this->config['path'].'; npm install');
 //            foreach ($response as $line) {
 //                $this->info($line);
 //            }
-            $response = Terminal::run('cd '.$this->config['path'].'; npm run dev');
+            $response = Terminal::timeout(600)->run('cd '.$this->config['path'].'; npm run dev');
 //            foreach ($response as $line) {
 //                $this->info($line);
 //            }

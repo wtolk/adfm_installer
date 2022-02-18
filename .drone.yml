@@ -9,7 +9,7 @@ steps:
       - composer install
 
   - name: 'Запускаем тесты'
-    image: php:8.0-alpine
+    image: seryak/p80
     commands:
       - ./vendor/bin/pest
 
