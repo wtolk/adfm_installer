@@ -1,4 +1,4 @@
-path: 'testla'
+path: 'test-instance'
 
 packages:
   - 'wtolk/adfm  --no-cache'

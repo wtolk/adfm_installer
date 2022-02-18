@@ -1,5 +1,27 @@
 kind: pipeline
 type: docker
+name: tests
+
+steps:
+  - name: 'Устанавливаем композер'
+    image: php:8.0-alpine
+    commands:
+      - composer install
+
+  - name: 'Запускаем тесты'
+    image: php:8.0-alpine
+    commands:
+      - ./vendor/bin/pest
+
+trigger:
+  event:
+    exclude:
+    - promote
+
+---
+
+kind: pipeline
+type: docker
 name: default
 
 steps:
