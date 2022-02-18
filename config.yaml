@@ -1,12 +1,19 @@
 path: 'test-instance'
 
 packages:
-  - 'wtolk/adfm  --no-cache'
+  - 'wtolk/adfm  --no-cache --with-all-dependencies'
   - 'wtolk/crud  --no-cache'
   - 'barryvdh/laravel-debugbar'
   - 'barryvdh/laravel-ide-helper'
 
+publish:
+    - 'Wtolk\Adfm\Providers\AdfmServiceProvider'
+    - 'Wtolk\Crud\Providers\CrudServiceProvider'
+    - 'Wtolk\AdfmElfinder\Providers\AdfmElfinderServiceProvider'
+
 npm: true
+
+migrate: true
 
 DB:
   DB_HOST: "mysql"

@@ -24,17 +24,26 @@ class InstallCommand extends Command
             }
         }
 
+        if (isset($this->config['publish'])) {
+            foreach ($this->config['publish'] as $provider) {
+                $response = Terminal::run('cd '.$this->config['path'].'; php artisan vendor:publish --provider="'.$provider.'"');
+                foreach ($response as $line) {
+                    $this->info($line);
+                }
+            }
+        }
+
         $this->setUpDB();
 
         if ($this->config['npm']) {
             $response = Terminal::timeout(600)->run('cd '.$this->config['path'].'; npm install');
-//            foreach ($response as $line) {
-//                $this->info($line);
-//            }
+            foreach ($response as $line) {
+                $this->info($line);
+            }
             $response = Terminal::timeout(600)->run('cd '.$this->config['path'].'; npm run dev');
-//            foreach ($response as $line) {
-//                $this->info($line);
-//            }
+            foreach ($response as $line) {
+                $this->info($line);
+            }
         }
 
         $this->info("Установка закончена");
@@ -46,10 +55,10 @@ class InstallCommand extends Command
      */
     private function installLaravel()
     {
-        $response = Terminal::run('composer create-project laravel/laravel '.$this->config['path']);
-//        foreach ($response as $line) {
-//            $this->info($line);
-//        }
+        $response = Terminal::run('composer create-project laravel/laravel '.$this->config['path'].' v8.6.11');
+        foreach ($response as $line) {
+            $this->info($line);
+        }
     }
 
     /**
@@ -61,9 +70,16 @@ class InstallCommand extends Command
         if (isset($this->config['DB'])) {
             foreach ($this->config['DB'] as $key => $value) {
                 $response = Terminal::run('cd '.$this->config['path'].'; php artisan adfm:set_env '.$key.' '.$value);
-//                foreach ($response as $line) {
-//                    $this->info($line);
-//                }
+                foreach ($response as $line) {
+                    $this->info($line);
+                }
+            }
+        }
+
+        if ($this->config['migrate'] == true) {
+            $response = Terminal::run('cd '.$this->config['path'].'; php artisan migrate');
+            foreach ($response as $line) {
+                $this->info($line);
             }
         }
     }
