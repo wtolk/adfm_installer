@@ -9,3 +9,4 @@ php adfmInstaller
 ```
 php artisan adfm:user test test@test.ru test
 ```
+ghj
